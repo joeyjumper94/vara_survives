@@ -1,20 +1,20 @@
 #requirements:
 #1, see Remy's bad ending
 #2, see Vara die to Reza
-#3, you must follow vara during the 3rd investigation
+#3, you must follow Vara during the 3rd investigation
 
 
 #for any developers that want this mod to speak to yours
 #if renpy.python.store_dicts["store"].get("vara_survives_varahere",false):
-#use this if you need to see if vara should be shown alongside Remy
+#use this if you need to see if Vara should be shown alongside Remy
 
 #if not renpy.python.store_dicts["store"].get("vara_survives_varadead",true):
-#this will be false if vara survived somehow
+#this will be false if Vara survived somehow
 
 #if persistent.vara_survives_persistant:
 #this will be true if you have gotten the good ending to this mod
 
-#the first block is where the bulk of the logic is done, deciding how and if vara survived or not
+#the first block is where the bulk of the logic is done, deciding how and if Vara survived or not
 label vara_survives_block1:
     $ vara_survives_varadead=True
     $ vara_survives_varahere=False
@@ -24,24 +24,24 @@ label vara_survives_block1:
     show reza at Position(xpos=0.4, xanchor='center', ypos=1.0, yanchor='top')
     show vara at Position(xpos=0.0, xanchor='left', ypos=1.0, yanchor='center')
     with ease
-    if renpy.python.store_dicts["store"].get("hatchling","")=="Vara":#player selected vara in the remy hatchlings mod, she survives anyway
+    if renpy.python.store_dicts["store"].get("hatchling","")=="Vara":#player selected Vara in the remy hatchlings mod, she survives anyway
         $ vara_survives_varadead=False
         label vara_survives_remy_hatchlings_vara:
             pass
-    elif not persistent.remygoodending or not persistent.remybadending or not varasaved:#did not see both of Remy's endings or our MC wasn't the one who saved vara this run
+    elif not persistent.remygoodending or not persistent.remybadending or not varasaved:#did not see both of Remy's endings or our MC wasn't the one who saved Vara this run
         if persistent.vara_survives_persistant:#player has already seen this mods good ending
             pass
         else:
             label vara_survives_fail:
                 pass
     $ vara_survives_varadead=False
-    m "when he fell vara immediately jumped on him and started bitting him"
-    m "I went as fast as I could, but with my injuries I knew i had little chance to get there in time"
+    m "when he fell Vara immediately jumped on him and started bitting him."
+    m "I went as fast as I could, but with my injuries I knew i had little chance to get there in time."
     play sound "fx/hit2.ogg"
     show vara at Position(xpos=-0.10, xanchor='left', ypos=0.90, yanchor='center')
     with ease
     play sound "fx/hit2.ogg"
-    m "after struggling for a bit, reza finally pushed her off"
+    m "after struggling for a bit, reza finally pushed her off."
     show reza annoyed b at Position(xpos=0.4, xanchor='center', ypos=1.0, yanchor='bottom') with easeinbottom
     m "as he got up, his hand dove into his pocket to grab a few bullets, which he proceeded to load into his revolver."
     show vara at Position(xpos=-0.10, xanchor='left', ypos=0.90, yanchor='center') with ease
@@ -50,7 +50,7 @@ label vara_survives_block1:
     $ renpy.pause (0.3)
     #show reza gunpoint b at Position(xpos=0.45, xanchor='center', ypos=1.0, yanchor='bottom') with dissolve
     show vara at Position(xpos=-0.20, xanchor='left', ypos=0.90, yanchor='center') with ease
-    m "as he pointed his gun at her, Izumi appeared behind him"
+    m "as he pointed his gun at her, Izumi appeared behind him."
     if persistent.annabadending==True:
         show izumi normal 4 d at center behind reza with easeinright
     else:
@@ -67,13 +67,13 @@ label vara_survives_block1:
 
 #if Vara survived some of the vanilla text no longer makes sense so we need to change it
 label vara_survives_block2:
-    if renpy.python.store_dicts["store"].get("hatchling","")!="Vara":#player didn't select vara in the remy hatchlings mod.
-        if persistent.vara_survives_persistant or persistent.remygoodending and persistent.remybadending and varasaved:#has seen both of Remy's endings and our MC rescued vara themself
+    if renpy.python.store_dicts["store"].get("hatchling","")!="Vara":#player didn't select Vara in the remy hatchlings mod.
+        if persistent.vara_survives_persistant or persistent.remygoodending and persistent.remybadending and varasaved:#has seen both of Remy's endings and our MC rescued Vara themself
             show remy shy behind vara at Position(xpos=0.6, xanchor='left', ypos=1.0, yanchor='bottom') with easeinright
             m "When I looked up again, I could see Remy looking at Vara with a pained expression."
             Ry "Were you looking for me? Did you sneak out again?"
             show vara sad flip at Position(xpos=0.35, xanchor='left', ypos=0.90, yanchor='center') with move8
-            m "He enveloped her as his tears started raining down"
+            m "He enveloped her as his tears started raining down."
             $ renpy.pause (6.0)
             stop music fadeout 3.0
             $ renpy.pause (0.5)
@@ -92,7 +92,7 @@ label vara_survives_block2:
 
 #show Vara alongside Remy unless she is dead or we chose to adopt Amely
 label vara_survives_block3:
-    if vara_survives_varadead or renpy.python.store_dicts["store"].get("hatchling","amely")=="amely":#Vara dead or the player selected Amely in Remy Hatchlings mod
+    if vara_survives_varadead or renpy.python.store_dicts["store"].get("hatchling","Amely")=="Amely":#Vara dead or the player selected Amely in Remy Hatchlings mod
         window hide
         nvl clear
         $ renpy.pause (2.0)
@@ -119,8 +119,8 @@ label vara_survives_block3:
 label vara_survives_block4:
     c "are you sure you will be fine?"
     if vara_survives_varadead:#Vara is dead
-        if renpy.python.store_dicts["store"].get("hatchling","vara")=="amely":#dialog from Remy Hatchlings that apears when you select Amely
-            Ry "Yes. After all, I'm not alone anymore. I have Amely to care for and I'm sure Adine will be up for helping if it came down to that"
+        if renpy.python.store_dicts["store"].get("hatchling","Vara")=="Amely":#dialog from Remy Hatchlings that apears when you select Amely
+            Ry "Yes. After all, I'm not alone anymore. I have Amely to care for and I'm sure Adine will be up for helping if it came down to that."
             Ry look "Though if I'd adopted Vara, things might have been different. I might have been quicker. She might have lived."
             c "Don't worry about it. There's nothing you can do now. Just look to the future, will you?"
             Ry normal "I'll try."
