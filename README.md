@@ -16,17 +16,14 @@ for any developers that want this mod to speak to yours
 
 
 if renpy.python.store_dicts["store"].get("vara_survives_varahere",false):
-
-use this if you need to see if vara should be shown alongside Remy
+#use this if you need to see if vara should be shown alongside Remy
 
 
 
 if not renpy.python.store_dicts["store"].get("vara_survives_varadead",true):
-
-this will be false if vara survived somehow
+#this will be false if vara survived somehow
 
 
 
 if persistent.vara_survives_persistant:
-
-this will be true if you have gotten the good ending to this mod
+#this will be true if you have gotten the good ending to this mod
