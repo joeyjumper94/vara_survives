@@ -25,5 +25,5 @@ if not renpy.python.store_dicts["store"].get("vara_survives_varadead",true):
 
 
 
-if persistent.vara_survives_persistant:
+if persistent.vara_survives_persistent:
 #this will be true if you have gotten the good ending to this mod
