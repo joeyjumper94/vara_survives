@@ -14,6 +14,9 @@
 #if persistent.vara_survives_persistent:
 #this will be True if you have gotten the good ending to this mod
 
+#vara_survives_varaforget=True
+#do this before remy5 branches into a good ending if you need vara to die for your mod
+
 #the first block is where the bulk of the logic is done, deciding how and if Vara survived or not
 label vara_survives_block1:
     $ vara_survives_varadead=True
@@ -30,12 +33,15 @@ label vara_survives_block1:
             pass
     elif not persistent.remygoodending or not persistent.remybadending or not varasaved:#did not see both of Remy's endings or our MC wasn't the one who saved Vara this run
         if persistent.vara_survives_persistent:#player has already seen this mods good ending
-            pass
+            if renpy.python.store_dicts["store"].get("vara_survives_varaforget",False):#another mod can prevent vara's memory if need be
+                jump vara_survives_fail
+            if modloader.modinfo.has_mod("This Dragon Owes me Ice Cream!") and katsuunplayed == False:#needed for tdomi's non vara routes
+                jump vara_survives_fail
         else:
             label vara_survives_fail:
                 pass
     $ vara_survives_varadead=False
-    m "when he fell Vara immediately jumped on him and started biting him."
+    m "When he fell Vara immediately jumped on him and started biting him."
     m "I went as fast as I could, but with my injuries I knew I had little chance to get there in time."
     play sound "fx/hit2.ogg"
     show vara at Position(xpos=-0.10, xanchor='left', ypos=1.0, yanchor='bottom')
@@ -118,7 +124,7 @@ label vara_survives_block3:
             pass
 #again more dialog that no longer makes sense if Vara survived
 label vara_survives_block4:
-    c "are you sure you will be fine?"
+    c "Are you sure you will be fine?"
     if vara_survives_varadead:#Vara is dead
         if renpy.python.store_dicts["store"].get("hatchling","Vara")=="Amely":#dialog from Remy Hatchlings that apears when you select Amely
             Ry "Yes. After all, I'm not alone anymore. I have Amely to care for and I'm sure Adine will be up for helping if it came down to that."
